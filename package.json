@@ -1,0 +1,22 @@
+{
+  "name": "qameen_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azizkag/Qameen.git"
+  },
+  "author": "aziz alghunaim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azizkag/Qameen/issues"
+  },
+  "homepage": "https://github.com/azizkag/Qameen#readme",
+  "dependencies": {
+    "express": "^4.13.1"
+  }
+}
