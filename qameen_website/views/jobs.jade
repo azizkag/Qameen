@@ -25,9 +25,18 @@ section#jobs
     .row
       .col-lg-8.col-lg-offset-2
           each val, index in jobs
-            .panel.panel-default
+            - var obId = val.id
+            div(id= obId).panel.panel-default
               .panel-heading
                 h3.panel-title
-                  val.id
+                  =val.get("company")
               .panel-body
-                val.get("description")
+                .col-lg-6
+                  =val.get("description")
+                .col-lg-6
+                  each req in val.get("requirments")
+                    ui
+                      li= req
+
+script(src="/template/js/classie.js")
+script(src="/template/js/cbpAnimatedHeader.js")
