@@ -17,3 +17,17 @@ section#about.success
       .col-lg-8.col-lg-offset-2.text-center
         a.btn.btn-lg.btn-outline(href="#")
           | List a new Job
+section#jobs
+  .container
+    .row
+      .col-lg-12.text-center
+        h2 Listed Positions 
+    .row
+      .col-lg-8.col-lg-offset-2
+          each val, index in jobs
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title
+                  val.id
+              .panel-body
+                val.get("description")
