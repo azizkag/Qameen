@@ -1,42 +1,53 @@
 include head.jade
 include navbar.jade
 
-section#about.success
+header.success
   .container
     .row
       .col-lg-12.text-center
-        h2 List a new position 
+        a(href="/newJob").blueLink
+          h2 List a new Job 
         hr.star-light
+        a(href="#jobs").blueLink
+          h2 Recommend someone for a job
     .row
-      .col-lg-4.col-lg-offset-2
+      .col-lg-8.col-lg-offset-2
         p
-          | You can list a new job and ask people to recommed to it.
-      .col-lg-4
-        p
-          | You can recommend the best for jobs here!
-      .col-lg-8.col-lg-offset-2.text-center
-        a.btn.btn-lg.btn-outline(href="#")
-          | List a new Job
+          | Use this page to view all the jobs posted on this platform, or click on the link above to post a new job for people to recommend names to you.
+
 section#jobs
   .container
     .row
       .col-lg-12.text-center
         h2 Listed Positions 
-    .row
-      .col-lg-8.col-lg-offset-2
-          each val, index in jobs
+    hr
+    each val, index in jobs
+      .row.row-eq-height
+        .col-lg-9.col-lg-offset-2
             - var obId = val.id
-            div(id= obId).panel.panel-default
-              .panel-heading
-                h3.panel-title
-                  =val.get("company")
-              .panel-body
-                .col-lg-6
-                  =val.get("description")
-                .col-lg-6
-                  each req in val.get("requirments")
-                    ui
-                      li= req
+            .col-lg-10
+              div(id= obId).panel.panel-default
+                .panel-heading
+                  h3.panel-title
+                    - var title = val.get("title")
+                    =val.get("company") + " - " + title
+                .panel-body
+                  .col-lg-6
+                    =val.get("description")
+                  .col-lg-6
+                    each req in val.get("requirments")
+                      ui
+                        li= req
+            #portfolio
+              .col-lg-2.portfolio-item
+                - var recs = val.get("numberRecs")
+                a(href="/makeRec/?jobId="+obId, class="portfolio-link")
+                  .caption
+                    .caption-content
+                      i(class="fa fa-pencil fa-3x")
+                  .recs
+                    =recs
+                    .small Recommendations
 
 script(src="/template/js/classie.js")
 script(src="/template/js/cbpAnimatedHeader.js")

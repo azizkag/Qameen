@@ -1,0 +1,14 @@
+include head.jade
+include navbar.jade
+
+section#makeRec
+  .container
+    hr
+    .row
+      .col-lg-12.text-center
+        if status
+          div(class="alert alert-success", role="alert")
+            = message
+        else
+          div(class="alert alert-danger", role="alert")
+            = message        

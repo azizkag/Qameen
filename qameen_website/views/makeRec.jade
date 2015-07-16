@@ -1,0 +1,74 @@
+include head.jade
+include navbar.jade
+
+section#makeRec
+  .container
+    hr
+    .row
+      .col-lg-12.text-center
+        h3 Job Details 
+    br
+    .row
+      .col-lg-8.col-lg-offset-2.jobDetails
+        h3
+          =job.get("title")
+        h4
+          =job.get("company")
+        .row
+          .col-lg-12
+            span FULL-TIME
+            | &nbsp;&nbsp;
+            span |
+            | &nbsp;&nbsp;
+            span
+              = job.get("city")
+            | &nbsp;&nbsp;
+            span |
+            | &nbsp;&nbsp;
+            span
+              = job.createdAt
+        hr
+        h4 Job Description
+        p
+          = job.get("description")
+        hr
+        h4 Requirments
+        each req in job.get("requirments")
+          ui
+            li= req
+
+section#makeRec
+  .container
+    hr
+    .row
+      .col-lg-12.text-center
+        h3 Submit Recommendation 
+    br
+    .row
+      .col-lg-8.col-lg-offset-2
+        form(action="submit?jobId="+job.id, method="post")
+          h4 Your Information
+          .form-group
+            label(for="author") Your Name
+            input(type="text", class="form-control", name="author", placeholder="Enter your name")
+          .form-group
+            label(for="authorEmail") Your Email
+            input(type="text", class="form-control", name="authorEmail", placeholder="Enter your email")
+          h4 Who do you recommend?
+          .form-group
+            label(for="name") Name
+            input(type="text", class="form-control", name="name", placeholder="Enter the name of person you recommend")
+          .form-group
+            label(for="details") How do you know them/Why you recommend them?
+            input(type="text", class="form-control", name="details", placeholder="Why are they a good fit")
+          .form-group
+            label(for="email") Their email
+            input(type="email", class="form-control", name="email", placeholder="Their email address")
+          .form-group
+            label(for="phone") Their phone number
+            input(type="text", class="form-control", name="phone", placeholder="Their phone number (if you have it)")
+          .text-center
+            button(type="submit", class="btn btn-primary") Submit Recommendation
+
+script(src="/template/js/classie.js")
+script(src="/template/js/cbpAnimatedHeader.js")
